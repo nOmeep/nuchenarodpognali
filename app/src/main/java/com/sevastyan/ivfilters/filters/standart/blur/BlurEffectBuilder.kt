@@ -4,12 +4,17 @@ import android.widget.ImageView
 import com.sevastyan.ivfilters.filters.Effect
 
 internal class BlurEffectBuilder(
-    private val imageView: ImageView
-) : Effect.EffectBuilder {
-    private var blurRadius = DEFAULT_RADIUS
+    imageView: ImageView
+) : Effect.ImageViewEffectBuilder(imageView = imageView) {
+    private var blurRadius = DEFAULT_RADIUS.toFloat()
     private var bitmapScale = DEFAULT_BITMAP_SCALE
 
     fun setRadius(blurRadius: Int): BlurEffectBuilder {
+        this.blurRadius = blurRadius.toFloat()
+        return this
+    }
+
+    fun setRadius(blurRadius: Float): BlurEffectBuilder {
         this.blurRadius = blurRadius
         return this
     }
@@ -20,16 +25,18 @@ internal class BlurEffectBuilder(
     }
 
     override fun make() {
-        val scale = bitmapScale.coerceIn(MIN_BITMAP_SCALE, MAX_BIMAP_SCALE)
-        val radius = blurRadius.coerceIn(MIN_RADIUS, MAX_RADIUS)
+        val model = BlurModel(
+            radius = blurRadius.coerceIn(MIN_RADIUS, MAX_RADIUS),
+            scale = bitmapScale.coerceIn(MIN_BITMAP_SCALE, MAX_BIMAP_SCALE)
+        )
 
-        BlurEffectManager(radius, scale)
+        BlurEffectManager(model)
             .executeOn(imageView)
     }
 
     companion object {
-        private const val MIN_RADIUS = 1
-        private const val MAX_RADIUS = 25
+        private const val MIN_RADIUS = 1f
+        private const val MAX_RADIUS = 25f
         private const val MIN_BITMAP_SCALE = 0f
         private const val MAX_BIMAP_SCALE = 1f
 
@@ -37,3 +44,4 @@ internal class BlurEffectBuilder(
         const val DEFAULT_BITMAP_SCALE = 0.5f
     }
 }
+

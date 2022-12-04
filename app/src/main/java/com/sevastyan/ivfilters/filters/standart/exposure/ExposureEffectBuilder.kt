@@ -1,13 +1,13 @@
-package com.sevastyan.ivfilters.filters.standart.invert
+package com.sevastyan.ivfilters.filters.standart.exposure
 
 import android.widget.ImageView
 import com.sevastyan.ivfilters.filters.Effect
 
-internal class InvertEffectBuilder(
+internal class ExposureEffectBuilder(
     imageView: ImageView
 ) : Effect.ImageViewEffectBuilder(imageView = imageView) {
     override fun make() {
-        InvertEffectManager()
+        ExposureEffectManager()
             .executeOn(imageView)
     }
 }

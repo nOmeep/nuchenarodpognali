@@ -4,8 +4,8 @@ import android.widget.ImageView
 import com.sevastyan.ivfilters.filters.Effect
 
 internal class GrayscaleEffectBuilder(
-    private val imageView: ImageView
-) : Effect.EffectBuilder {
+    imageView: ImageView
+) : Effect.ImageViewEffectBuilder(imageView = imageView) {
     private var saturation: Float = DEFAULT_SATURATION
 
     fun setSaturation(saturation: Float): GrayscaleEffectBuilder {
@@ -14,7 +14,13 @@ internal class GrayscaleEffectBuilder(
     }
 
     override fun make() {
-        GrayscaleEffectManager(saturation)
+        val model = GrayscaleModel(
+            r = (saturation + 0.33f).coerceIn(0.33f, 1f),
+            g = (saturation + 0.59f).coerceIn(0.59f, 1f),
+            b = (saturation + 0.11f).coerceIn(0.11f, 1f),
+        )
+
+        GrayscaleEffectManager(model)
             .executeOn(imageView)
     }
 

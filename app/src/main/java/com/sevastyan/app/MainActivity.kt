@@ -5,10 +5,13 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sevastyan.ivfilters.utils.ImageViewUtils.blur
+import com.sevastyan.ivfilters.utils.ImageViewUtils.exposure
 import com.sevastyan.ivfilters.utils.ImageViewUtils.grayscale
 import com.sevastyan.ivfilters.utils.ImageViewUtils.invertColors
 import com.sevastyan.ivfilters.utils.ImageViewUtils.median
-import java.util.*
+import com.sevastyan.ivfilters.utils.ImageViewUtils.sepia
+import java.util.Queue
+import java.util.LinkedList
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         val actions: Queue<() -> Unit> = LinkedList()
 
+        actions.add { testImage.sepia() }
+        actions.add { testImage.exposure() }
         actions.add { testImage.median() }
         actions.add { testImage.invertColors() }
         actions.add { testImage.blur() }

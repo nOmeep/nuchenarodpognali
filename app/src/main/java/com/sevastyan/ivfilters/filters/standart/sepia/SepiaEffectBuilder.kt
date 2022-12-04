@@ -1,13 +1,13 @@
-package com.sevastyan.ivfilters.filters.standart.invert
+package com.sevastyan.ivfilters.filters.standart.sepia
 
 import android.widget.ImageView
 import com.sevastyan.ivfilters.filters.Effect
 
-internal class InvertEffectBuilder(
+internal class SepiaEffectBuilder(
     imageView: ImageView
 ) : Effect.ImageViewEffectBuilder(imageView = imageView) {
     override fun make() {
-        InvertEffectManager()
+        SepiaEffectManager()
             .executeOn(imageView)
     }
 }

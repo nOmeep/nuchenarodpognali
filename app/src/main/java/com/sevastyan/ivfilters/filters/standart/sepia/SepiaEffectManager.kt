@@ -1,4 +1,4 @@
-package com.sevastyan.ivfilters.filters.standart.invert
+package com.sevastyan.ivfilters.filters.standart.sepia
 
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
@@ -6,18 +6,18 @@ import android.widget.ImageView
 import com.sevastyan.ivfilters.filters.Effect
 import com.sevastyan.ivfilters.filters.EffectManager
 
-internal class InvertEffectManager : EffectManager<Effect.EffectModel?>(model = null) {
+internal class SepiaEffectManager : EffectManager<Effect.EffectModel?>(model = null) {
     override fun applyEffect(imageView: ImageView) {
-        val matrix = ColorMatrix(invertColorsMatrix)
+        val matrix = ColorMatrix(sepiaMatrix)
         val filter = ColorMatrixColorFilter(matrix)
         imageView.colorFilter = filter
     }
 
     companion object {
-        private val invertColorsMatrix = floatArrayOf(
-            -1f, 0f, 0f, 0f, 255f,
-            0f, -1f, 0f, 0f, 255f,
-            0f, 0f, -1f, 0f, 255f,
+        private val sepiaMatrix = floatArrayOf(
+            1f, 0f, 0f, 0f, 0f,
+            0f, 1f, 0f, 0f, 0f,
+            0f, 0f, 0.85f, 0f, 0f,
             0f, 0f, 0f, 1f, 0f
         )
     }
