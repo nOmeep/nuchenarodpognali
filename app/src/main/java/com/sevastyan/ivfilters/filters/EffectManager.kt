@@ -10,5 +10,6 @@ abstract class EffectManager<M : Effect.EffectModel?>(
         imageView.invalidate()
     }
 
+    // TODO: filter on background
     protected abstract fun applyEffect(imageView: ImageView)
 }
