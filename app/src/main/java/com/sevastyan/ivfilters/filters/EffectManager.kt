@@ -2,13 +2,11 @@ package com.sevastyan.ivfilters.filters
 
 import android.widget.ImageView
 
-abstract class EffectManager(
-    protected val imageView: ImageView
-) {
-    fun execute() {
-        applyEffect()
+abstract class EffectManager {
+    fun executeOn(imageView: ImageView) {
+        applyEffect(imageView)
         imageView.invalidate()
     }
 
-    abstract fun applyEffect()
+    protected abstract fun applyEffect(imageView: ImageView)
 }

@@ -7,6 +7,7 @@ internal class InvertEffectBuilder(
     private val imageView: ImageView
 ) : Effect.EffectBuilder {
     override fun make() {
-        InvertEffectManager(imageView).execute()
+        InvertEffectManager()
+            .executeOn(imageView)
     }
 }

@@ -5,12 +5,8 @@ import android.graphics.ColorMatrixColorFilter
 import android.widget.ImageView
 import com.sevastyan.ivfilters.filters.EffectManager
 
-internal class InvertEffectManager(
-    imageView: ImageView
-) : EffectManager(
-    imageView = imageView
-) {
-    override fun applyEffect() {
+internal class InvertEffectManager : EffectManager() {
+    override fun applyEffect(imageView: ImageView) {
         val matrix = ColorMatrix(invertColorsMatrix)
         val filter = ColorMatrixColorFilter(matrix)
         imageView.colorFilter = filter

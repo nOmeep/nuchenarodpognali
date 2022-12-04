@@ -14,7 +14,8 @@ internal class GrayscaleEffectBuilder(
     }
 
     override fun make() {
-        GrayscaleEffectManager(saturation, imageView).execute()
+        GrayscaleEffectManager(saturation)
+            .executeOn(imageView)
     }
 
     companion object {

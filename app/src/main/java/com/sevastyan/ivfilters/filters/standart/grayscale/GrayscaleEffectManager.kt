@@ -6,12 +6,9 @@ import android.widget.ImageView
 import com.sevastyan.ivfilters.filters.EffectManager
 
 internal class GrayscaleEffectManager(
-    private val saturation: Float,
-    imageView: ImageView
-) : EffectManager(
-    imageView = imageView
-) {
-    override fun applyEffect() {
+    private val saturation: Float
+) : EffectManager() {
+    override fun applyEffect(imageView: ImageView) {
         val matrix = ColorMatrix(getGrayscaleMatrix())
         val filter = ColorMatrixColorFilter(matrix)
         imageView.drawable.colorFilter = filter

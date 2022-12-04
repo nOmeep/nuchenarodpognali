@@ -15,12 +15,9 @@ import kotlin.math.roundToInt
 
 internal class BlurEffectManager(
     private val radius: Int,
-    private val scale: Float,
-    imageView: ImageView
-) : EffectManager(
-    imageView = imageView
-) {
-    override fun applyEffect() {
+    private val scale: Float
+) : EffectManager() {
+    override fun applyEffect(imageView: ImageView) {
         val drawable = imageView.drawable
         val blurred = blurRenderScript(imageView.context, (drawable as BitmapDrawable).bitmap)
         imageView.setImageBitmap(blurred)

@@ -3,10 +3,8 @@ package com.sevastyan.ivfilters.filters.standart.median
 import android.widget.ImageView
 import com.sevastyan.ivfilters.filters.EffectManager
 
-class MedianEffectManager(
-    imageView: ImageView
-) : EffectManager(imageView = imageView) {
-    override fun applyEffect() {
+class MedianEffectManager : EffectManager() {
+    override fun applyEffect(imageView: ImageView) {
         TODO("Not yet implemented")
     }
 }
