@@ -6,6 +6,8 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sevastyan.ivfilters.utils.ImageViewUtils.blur
 import com.sevastyan.ivfilters.utils.ImageViewUtils.grayscale
+import com.sevastyan.ivfilters.utils.ImageViewUtils.invertColors
+import com.sevastyan.ivfilters.utils.ImageViewUtils.median
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         val actions: Queue<() -> Unit> = LinkedList()
 
+        actions.add { testImage.median() }
+        actions.add { testImage.invertColors() }
         actions.add { testImage.blur() }
         actions.add { testImage.grayscale() }
 

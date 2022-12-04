@@ -20,13 +20,16 @@ internal class BlurEffectBuilder(
     }
 
     override fun make() {
+        val scale = bitmapScale.coerceIn(MIN_BITMAP_SCALE, MAX_BIMAP_SCALE)
         val radius = blurRadius.coerceIn(MIN_RADIUS, MAX_RADIUS)
-        BlurEffectManager(radius, bitmapScale, imageView).execute()
+        BlurEffectManager(radius, scale, imageView).execute()
     }
 
     companion object {
         private const val MIN_RADIUS = 1
         private const val MAX_RADIUS = 25
+        private const val MIN_BITMAP_SCALE = 0f
+        private const val MAX_BIMAP_SCALE = 1f
 
         const val DEFAULT_RADIUS = 12
         const val DEFAULT_BITMAP_SCALE = 0.5f

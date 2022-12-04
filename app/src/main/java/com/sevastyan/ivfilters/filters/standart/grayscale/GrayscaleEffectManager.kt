@@ -11,7 +11,13 @@ internal class GrayscaleEffectManager(
 ) : EffectManager(
     imageView = imageView
 ) {
-    private fun getGrayScaleMatrix(): FloatArray {
+    override fun applyEffect() {
+        val matrix = ColorMatrix(getGrayscaleMatrix())
+        val filter = ColorMatrixColorFilter(matrix)
+        imageView.drawable.colorFilter = filter
+    }
+
+    private fun getGrayscaleMatrix(): FloatArray {
         val r = (saturation + 0.33f).coerceIn(0.33f, 1f)
         val g = (saturation + 0.59f).coerceIn(0.59f, 1f)
         val b = (saturation + 0.11f).coerceIn(0.11f, 1f)
@@ -22,11 +28,5 @@ internal class GrayscaleEffectManager(
             r, g, b, 0f, 0f,
             0f, 0f, 0f, 1f, 0f
         )
-    }
-
-    override fun applyEffect() {
-        val matrix = ColorMatrix(getGrayScaleMatrix())
-        val filter = ColorMatrixColorFilter(matrix)
-        imageView.drawable.colorFilter = filter
     }
 }
