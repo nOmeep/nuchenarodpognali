@@ -8,6 +8,7 @@ import com.sevastyan.ivfilters.filters.standart.exposure.ExposureEffect
 import com.sevastyan.ivfilters.filters.standart.grayscale.GrayscaleEffect
 import com.sevastyan.ivfilters.filters.standart.grayscale.GrayscaleEffectBuilder.Companion.DEFAULT_SATURATION
 import com.sevastyan.ivfilters.filters.standart.invert.InvertEffect
+import com.sevastyan.ivfilters.filters.standart.noise.RemoveNoiseEffect
 import com.sevastyan.ivfilters.filters.standart.sepia.SepiaEffect
 
 object ImageViewUtils {
@@ -27,8 +28,9 @@ object ImageViewUtils {
             .make()
     }
 
-    fun <T : ImageView> T.median() {
-        // TODO: "Median filter implementation"
+    fun <T : ImageView> T.removeNoise() {
+        RemoveNoiseEffect().with(this)
+            .make()
     }
 
     fun <T : ImageView> T.exposure() {
