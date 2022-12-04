@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.sevastyan.kfilters.filters.standart.blur
+package com.sevastyan.ivfilters.filters.standart.blur
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,22 +10,21 @@ import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
 import android.widget.ImageView
+import com.sevastyan.ivfilters.filters.EffectManager
 import kotlin.math.roundToInt
 
 internal class BlurEffectManager(
-    private val radius: Int,
-    private val scale: Float
-) {
-    fun applyEffect(imageView: ImageView) {
+    model: BlurModel
+) : EffectManager<BlurModel>(model = model) {
+    override fun applyEffect(imageView: ImageView) {
         val drawable = imageView.drawable
         val blurred = blurRenderScript(imageView.context, (drawable as BitmapDrawable).bitmap)
         imageView.setImageBitmap(blurred)
-        imageView.invalidate()
     }
 
     private fun blurRenderScript(context: Context, smallBitmap: Bitmap): Bitmap {
-        val width = (smallBitmap.width * scale).roundToInt()
-        val height = (smallBitmap.height * scale).roundToInt()
+        val width = (smallBitmap.width * model.scale).roundToInt()
+        val height = (smallBitmap.height * model.scale).roundToInt()
 
         val inputBitmap = Bitmap.createScaledBitmap(smallBitmap, width, height, false)
         val outputBitmap = Bitmap.createBitmap(inputBitmap)
@@ -33,7 +32,7 @@ internal class BlurEffectManager(
         val theIntrinsic = ScriptIntrinsicBlur.create(renderScript, Element.U8_4(renderScript))
         val tmpIn = Allocation.createFromBitmap(renderScript, inputBitmap)
         val tmpOut = Allocation.createFromBitmap(renderScript, outputBitmap)
-        theIntrinsic.setRadius(radius.toFloat())
+        theIntrinsic.setRadius(model.radius)
         theIntrinsic.setInput(tmpIn)
         theIntrinsic.forEach(tmpOut)
         tmpOut.copyTo(outputBitmap)
