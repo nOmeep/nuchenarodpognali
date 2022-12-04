@@ -10,6 +10,4 @@ interface Effect<T : Effect.ImageViewEffectBuilder> {
     ) {
         abstract fun make()
     }
-
-    interface EffectModel
 }
