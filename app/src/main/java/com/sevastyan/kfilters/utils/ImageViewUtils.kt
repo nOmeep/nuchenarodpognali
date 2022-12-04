@@ -5,10 +5,8 @@ import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.widget.ImageView
 import androidx.core.graphics.drawable.toBitmap
-import com.sevastyan.kfilters.filters.Filter
-import com.sevastyan.kfilters.filters.standart.GrayScale
 
-/**
+/*/**
  * Utility functions to work with for @see com.sevastyan.kfilters.filters.Filter
  * that will be applied on ImageView's
  */
@@ -45,3 +43,4 @@ object ImageViewUtils {
         setImageBitmap(filter.applyFilter())
     }
 }
+*/
