@@ -1,9 +1,9 @@
-package com.sevastyan.kfilters.filters.standart.grayscale
+package com.sevastyan.ivfilters.filters.standart.grayscale
 
 import android.widget.ImageView
-import com.sevastyan.kfilters.filters.Effect
+import com.sevastyan.ivfilters.filters.Effect
 
-class GrayscaleEffectBuilder(
+internal class GrayscaleEffectBuilder(
     private val imageView: ImageView
 ) : Effect.EffectBuilder {
     private var saturation: Float = DEFAULT_SATURATION
@@ -13,11 +13,11 @@ class GrayscaleEffectBuilder(
         return this
     }
 
-    override fun apply() {
-        GrayscaleEffectManager(saturation).applyFilter(imageView)
+    override fun make() {
+        GrayscaleEffectManager(saturation, imageView).execute()
     }
 
     companion object {
-        private const val DEFAULT_SATURATION = 0f
+        const val DEFAULT_SATURATION = 0f
     }
 }

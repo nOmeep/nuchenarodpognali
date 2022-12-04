@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.sevastyan.kfilters.filters.standart.blur
+package com.sevastyan.ivfilters.filters.standart.blur
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,17 +10,20 @@ import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
 import android.widget.ImageView
+import com.sevastyan.ivfilters.filters.EffectManager
 import kotlin.math.roundToInt
 
 internal class BlurEffectManager(
     private val radius: Int,
-    private val scale: Float
+    private val scale: Float,
+    imageView: ImageView
+) : EffectManager(
+    imageView = imageView
 ) {
-    fun applyEffect(imageView: ImageView) {
+    override fun applyEffect() {
         val drawable = imageView.drawable
         val blurred = blurRenderScript(imageView.context, (drawable as BitmapDrawable).bitmap)
         imageView.setImageBitmap(blurred)
-        imageView.invalidate()
     }
 
     private fun blurRenderScript(context: Context, smallBitmap: Bitmap): Bitmap {
