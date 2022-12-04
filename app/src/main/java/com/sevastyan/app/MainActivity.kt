@@ -6,6 +6,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.sevastyan.ivfilters.utils.ImageViewUtils.blur
 import com.sevastyan.ivfilters.utils.ImageViewUtils.exposure
+import com.sevastyan.ivfilters.utils.ImageViewUtils.flip
 import com.sevastyan.ivfilters.utils.ImageViewUtils.grayscale
 import com.sevastyan.ivfilters.utils.ImageViewUtils.invertColors
 import com.sevastyan.ivfilters.utils.ImageViewUtils.makeNoise
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         actions.add { testImage.makeNoise() }
         actions.add { testImage.invertColors() }
         actions.add { testImage.blur() }
+        actions.add { testImage.flip(horizontal = true) }
         actions.add { testImage.grayscale() }
 
         filterButton.setOnClickListener {

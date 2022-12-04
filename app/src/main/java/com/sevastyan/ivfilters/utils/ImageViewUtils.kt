@@ -5,6 +5,9 @@ import com.sevastyan.ivfilters.filters.standart.blur.BlurEffect
 import com.sevastyan.ivfilters.filters.standart.blur.BlurEffectBuilder.Companion.DEFAULT_BITMAP_SCALE
 import com.sevastyan.ivfilters.filters.standart.blur.BlurEffectBuilder.Companion.DEFAULT_RADIUS
 import com.sevastyan.ivfilters.filters.standart.exposure.ExposureEffect
+import com.sevastyan.ivfilters.filters.standart.flip.FlipEffect
+import com.sevastyan.ivfilters.filters.standart.flip.FlipEffectBuilder.Companion.DEFAULT_FLIP_HORIZONTAL
+import com.sevastyan.ivfilters.filters.standart.flip.FlipEffectBuilder.Companion.DEFAULT_FLIP_VERTICAL
 import com.sevastyan.ivfilters.filters.standart.grayscale.GrayscaleEffect
 import com.sevastyan.ivfilters.filters.standart.grayscale.GrayscaleEffectBuilder.Companion.DEFAULT_SATURATION
 import com.sevastyan.ivfilters.filters.standart.invert.InvertEffect
@@ -15,6 +18,16 @@ object ImageViewUtils {
     fun <T : ImageView> T.grayscale(saturation: Float = DEFAULT_SATURATION) {
         GrayscaleEffect().with(this)
             .setSaturation(saturation)
+            .make()
+    }
+
+    fun <T : ImageView> T.flip(
+        vertical: Boolean = DEFAULT_FLIP_VERTICAL,
+        horizontal: Boolean = DEFAULT_FLIP_HORIZONTAL,
+    ) {
+        FlipEffect().with(this)
+            .setFlipHorizontal(horizontal)
+            .setFlipVertical(vertical)
             .make()
     }
 
