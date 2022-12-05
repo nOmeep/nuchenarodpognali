@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.sevastyan.ivfilters.utils.ImageViewUtils.blur
-import com.sevastyan.ivfilters.utils.ImageViewUtils.exposure
-import com.sevastyan.ivfilters.utils.ImageViewUtils.flip
-import com.sevastyan.ivfilters.utils.ImageViewUtils.grayscale
-import com.sevastyan.ivfilters.utils.ImageViewUtils.invertColors
-import com.sevastyan.ivfilters.utils.ImageViewUtils.makeNoise
-import com.sevastyan.ivfilters.utils.ImageViewUtils.sepia
+import com.sevapanov.ivfilter.utils.ImageViewUtils.blur
+import com.sevapanov.ivfilter.utils.ImageViewUtils.exposure
+import com.sevapanov.ivfilter.utils.ImageViewUtils.flip
+import com.sevapanov.ivfilter.utils.ImageViewUtils.grayscale
+import com.sevapanov.ivfilter.utils.ImageViewUtils.invertColors
+import com.sevapanov.ivfilter.utils.ImageViewUtils.makeNoise
+import com.sevapanov.ivfilter.utils.ImageViewUtils.sepia
 import java.util.Queue
 import java.util.LinkedList
 
