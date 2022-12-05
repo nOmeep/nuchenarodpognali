@@ -5,7 +5,7 @@ import com.sevastyan.ivfilters.filters.Effect
 
 internal class BlurEffectBuilder(
     imageView: ImageView
-) : Effect.ImageViewEffectBuilder(imageView = imageView) {
+) : Effect.EffectBuilder<BlurModel>(imageView = imageView) {
     private var blurRadius = DEFAULT_RADIUS.toFloat()
     private var bitmapScale = DEFAULT_BITMAP_SCALE
 
@@ -24,14 +24,13 @@ internal class BlurEffectBuilder(
         return this
     }
 
-    override fun make() {
+    override fun make(): BlurEffectManager {
         val model = BlurModel(
             radius = blurRadius.coerceIn(MIN_RADIUS, MAX_RADIUS),
             scale = bitmapScale.coerceIn(MIN_BITMAP_SCALE, MAX_BIMAP_SCALE)
         )
 
-        BlurEffectManager(model)
-            .executeOn(imageView)
+        return BlurEffectManager(model, imageView)
     }
 
     companion object {

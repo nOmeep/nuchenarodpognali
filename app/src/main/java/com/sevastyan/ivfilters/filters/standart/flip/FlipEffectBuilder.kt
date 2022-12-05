@@ -5,7 +5,7 @@ import com.sevastyan.ivfilters.filters.Effect
 
 internal class FlipEffectBuilder(
     imageView: ImageView
-) : Effect.ImageViewEffectBuilder(imageView = imageView) {
+) : Effect.EffectBuilder<FlipEffectModel>(imageView = imageView) {
     private var flipHorizontal: Boolean = DEFAULT_FLIP_HORIZONTAL
     private var flipVertical: Boolean = DEFAULT_FLIP_VERTICAL
 
@@ -19,14 +19,13 @@ internal class FlipEffectBuilder(
         return this
     }
 
-    override fun make() {
+    override fun make(): FlipEffectManager {
         val model = FlipEffectModel(
             flipVertical = flipVertical,
             flipHorizontal = flipHorizontal
         )
 
-        FlipEffectManager(model)
-            .executeOn(imageView)
+        return FlipEffectManager(model, imageView)
     }
 
     companion object {

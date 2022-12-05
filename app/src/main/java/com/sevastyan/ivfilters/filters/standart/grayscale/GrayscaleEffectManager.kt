@@ -3,11 +3,15 @@ package com.sevastyan.ivfilters.filters.standart.grayscale
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.widget.ImageView
-import com.sevastyan.ivfilters.filters.EffectManager
+import com.sevastyan.ivfilters.filters.Effect
 
 internal class GrayscaleEffectManager(
-    model: GrayscaleModel
-) : EffectManager<GrayscaleModel>(model = model) {
+    model: GrayscaleModel,
+    imageView: ImageView
+) : Effect.EffectManager<GrayscaleModel>(
+    model = model,
+    imageView = imageView
+) {
     override fun applyEffect(imageView: ImageView) {
         val matrix = ColorMatrix(getGrayscaleMatrix())
         val filter = ColorMatrixColorFilter(matrix)

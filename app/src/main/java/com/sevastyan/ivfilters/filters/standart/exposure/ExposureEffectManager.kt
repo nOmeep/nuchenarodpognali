@@ -3,9 +3,14 @@ package com.sevastyan.ivfilters.filters.standart.exposure
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.widget.ImageView
-import com.sevastyan.ivfilters.filters.EffectManager
+import com.sevastyan.ivfilters.filters.Effect
 
-internal class ExposureEffectManager : EffectManager<Unit?>(model = null) {
+internal class ExposureEffectManager(
+    imageView: ImageView
+) : Effect.EffectManager<Unit?>(
+    model = null,
+    imageView = imageView
+) {
     override fun applyEffect(imageView: ImageView) {
         val matrix = ColorMatrix(exposureMatrix)
         val filter = ColorMatrixColorFilter(matrix)

@@ -10,12 +10,16 @@ import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
 import android.widget.ImageView
 import androidx.core.graphics.drawable.toBitmap
-import com.sevastyan.ivfilters.filters.EffectManager
+import com.sevastyan.ivfilters.filters.Effect
 import kotlin.math.roundToInt
 
 internal class BlurEffectManager(
-    model: BlurModel
-) : EffectManager<BlurModel>(model = model) {
+    model: BlurModel,
+    imageView: ImageView
+) : Effect.EffectManager<BlurModel>(
+    model = model,
+    imageView = imageView
+) {
     override fun applyEffect(imageView: ImageView) {
         val blurred = blurRenderScript(imageView.context, imageView.drawable.toBitmap())
         imageView.setImageBitmap(blurred)

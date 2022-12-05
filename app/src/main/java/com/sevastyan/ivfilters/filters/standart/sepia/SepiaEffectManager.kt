@@ -3,9 +3,14 @@ package com.sevastyan.ivfilters.filters.standart.sepia
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.widget.ImageView
-import com.sevastyan.ivfilters.filters.EffectManager
+import com.sevastyan.ivfilters.filters.Effect
 
-internal class SepiaEffectManager : EffectManager<Unit?>(model = null) {
+internal class SepiaEffectManager(
+    imageView: ImageView
+) : Effect.EffectManager<Unit?>(
+    model = null,
+    imageView = imageView
+) {
     override fun applyEffect(imageView: ImageView) {
         val matrix = ColorMatrix(sepiaMatrix)
         val filter = ColorMatrixColorFilter(matrix)

@@ -4,10 +4,15 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.widget.ImageView
 import androidx.core.graphics.drawable.toBitmap
-import com.sevastyan.ivfilters.filters.EffectManager
+import com.sevastyan.ivfilters.filters.Effect
 import kotlin.random.Random
 
-internal class NoiseEffectManager : EffectManager<Unit?>(model = null) {
+internal class NoiseEffectManager(
+    imageView: ImageView
+) : Effect.EffectManager<Unit?>(
+    model = null,
+    imageView = imageView
+) {
     override fun applyEffect(imageView: ImageView) {
         val noiseBitmap = applyNoise(imageView.drawable.toBitmap())
         imageView.setImageBitmap(noiseBitmap)

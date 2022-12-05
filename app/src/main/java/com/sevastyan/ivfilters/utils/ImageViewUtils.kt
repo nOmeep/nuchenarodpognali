@@ -19,6 +19,7 @@ object ImageViewUtils {
         GrayscaleEffect().with(this)
             .setSaturation(saturation)
             .make()
+            .execute()
     }
 
     fun <T : ImageView> T.flip(
@@ -29,6 +30,7 @@ object ImageViewUtils {
             .setFlipHorizontal(horizontal)
             .setFlipVertical(vertical)
             .make()
+            .execute()
     }
 
     fun <T : ImageView> T.blur(
@@ -39,25 +41,30 @@ object ImageViewUtils {
             .setRadius(radius)
             .setBitmapScale(bitmapScale)
             .make()
+            .execute()
     }
 
     fun <T : ImageView> T.makeNoise() {
         NoiseEffect().with(this)
             .make()
+            .execute()
     }
 
     fun <T : ImageView> T.exposure() {
         ExposureEffect().with(this)
             .make()
+            .execute()
     }
 
     fun <T : ImageView> T.invertColors() {
         InvertEffect().with(this)
             .make()
+            .execute()
     }
 
     fun <T : ImageView> T.sepia() {
         SepiaEffect().with(this)
             .make()
+            .execute()
     }
 }

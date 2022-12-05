@@ -5,9 +5,8 @@ import com.sevastyan.ivfilters.filters.Effect
 
 internal class SepiaEffectBuilder(
     imageView: ImageView
-) : Effect.ImageViewEffectBuilder(imageView = imageView) {
-    override fun make() {
-        SepiaEffectManager()
-            .executeOn(imageView)
+) : Effect.EffectBuilder<Unit?>(imageView = imageView) {
+    override fun make(): SepiaEffectManager {
+        return SepiaEffectManager(imageView)
     }
 }

@@ -4,11 +4,15 @@ import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.widget.ImageView
 import androidx.core.graphics.drawable.toBitmap
-import com.sevastyan.ivfilters.filters.EffectManager
+import com.sevastyan.ivfilters.filters.Effect
 
 internal class FlipEffectManager(
-    model: FlipEffectModel
-) : EffectManager<FlipEffectModel>(model = model) {
+    model: FlipEffectModel,
+    imageView: ImageView
+) : Effect.EffectManager<FlipEffectModel>(
+    model = model,
+    imageView = imageView
+) {
     override fun applyEffect(imageView: ImageView) {
         val flippedBitmap = flipImageBitmap(imageView.drawable.toBitmap())
         imageView.setImageBitmap(flippedBitmap)

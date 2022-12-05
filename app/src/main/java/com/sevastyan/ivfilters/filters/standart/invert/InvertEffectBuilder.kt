@@ -5,9 +5,8 @@ import com.sevastyan.ivfilters.filters.Effect
 
 internal class InvertEffectBuilder(
     imageView: ImageView
-) : Effect.ImageViewEffectBuilder(imageView = imageView) {
-    override fun make() {
-        InvertEffectManager()
-            .executeOn(imageView)
+) : Effect.EffectBuilder<Unit?>(imageView = imageView) {
+    override fun make(): InvertEffectManager {
+        return InvertEffectManager(imageView)
     }
 }
