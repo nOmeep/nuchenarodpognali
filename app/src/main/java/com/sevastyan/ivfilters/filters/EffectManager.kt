@@ -7,7 +7,8 @@ import android.widget.ImageView
 internal abstract class EffectManager<M>(
     protected val model: M
 ) {
-    private val handlerThread: HandlerThread = HandlerThread(HANDLER_THREAD_DEFAULT_NAME).apply { start() }
+    private val handlerThread: HandlerThread =
+        HandlerThread(HANDLER_THREAD_DEFAULT_NAME).apply { start() }
     private val handler: Handler = Handler(handlerThread.looper)
 
     fun executeOn(imageView: ImageView) {
